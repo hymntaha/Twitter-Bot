@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hymntaha/twitter-bot/issues"
   },
-  "homepage": "https://github.com/hymntaha/twitter-bot#readme"
+  "homepage": "https://github.com/hymntaha/twitter-bot#readme",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
 }

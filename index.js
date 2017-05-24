@@ -17,17 +17,31 @@ function gotData(err, data, response)
     }
 };
 
-var tweet = {
-    status: 'my twitter bot'
+var stream = T.stream('user');
+
+stream.on('follow', followed);
+
+function followed(eventMsg){
+    var name = eventMsg.source.name;
+    var screenName = eventMsg.source.screen_name;
+    tweetIt('.@' + screenName + ' thank you for following me. Answered by Taha AI.');
 }
 
-T.post('statuses/update', tweet, tweeted);
+function tweetIt(txt){
 
-function tweeted(err, data, response) {
-    if(err){
-        console.log('something went wrong');
+    var tweet = {
+        status: txt
     }
-    else{
-        console.log('It worked!');
+
+    T.post('statuses/update', tweet, tweeted);
+
+    function tweeted(err, data, response) {
+        if(err){
+            console.log('something went wrong');
+        }
+        else{
+            console.log('It worked!');
+        }
     }
+
 }
